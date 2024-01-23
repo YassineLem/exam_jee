@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Form Citoyen</title>
+</head>
+<body>
+    <div layout:fragment="content1">
+        <div class="col-md-6 offset-3">
+        <form method="post" th:action="">
+            <div>
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="nom" name="nom" th:value="${citoyen.nom}">
+                <span class="text-danger" th:errors="${citoyen.nom}"></span>
+            </div>
+            <div>
+                <label for="date" class="form-label">Date Naisssance</label>
+                <input type="date" id="date" name="dateNaissance" th:value="${citoyen.dateNaissance}">
+                <span class="text-danger" th:errors="${citoyen.dateNaissance}"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="template"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <style>
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            margin: 20px 0; /* Adjust as needed */
+            color: red;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+
+    </style>
+
+</head>
+<body>
+<div layout:fragment="content1" class="container">
+    <h1>Bienvenue sur le portail de la campagne de vaccination</h1>
+    <img  th:src="@{photo/photo.png}" alt="Example Image">
+</div>
+</body>
+</html>
