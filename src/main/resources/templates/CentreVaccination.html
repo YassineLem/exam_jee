@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content1">
+    <div class="container mt-2">
+        <div class="card">
+            <div class="card-header">Recherche des Citoyens par Centre de Vaccination</div>
+            <div class="card-body" mt-5>
+                <form th:action="@{/ListCentreVaccination}" method="get">
+                    <label for="centreNom">Nom du Centre de Vaccination:</label>
+                    <input type="text" id="centreNom" name="centreNom">
+                    <button type="submit">Rechercher</button>
+                </form>
+                <div th:if="${citoyens != null and not #lists.isEmpty(citoyens)}">
+                    <h2>Citoyens associés au Centre de Vaccination :</h2>
+                    <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Date</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="p:${citoyens}">
+                        <td th:text="${p.id}"></td>
+                        <td th:text="${p.nom}"></td>
+                        <td th:text="${p.dateNaissance}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+                <!--        <ul class="nav nav-pills">-->
+                <!--            <li th:each="page,status:${pages}">-->
+                <!--                <a th:class="${status.index==currentPage?'btn btn-info ms-1':'btn btn-outline-info ms-1'}" class="btn btn-outline-info m-lg-1"-->
+                <!--                   th:text="${status.index}"-->
+                <!--                   th:href="@{/user/index(page=${status.index},keyword=${keywordS})}"-->
+                <!--                >-->
+
+                <!--                </a>-->
+                <!--            </li>-->
+                <!--        </ul>-->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Form CentreVaccination</title>
+    <style>
+        h3{
+            text-align: center;
+            color: red;
+        }
+        div{
+            margin-bottom: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <div layout:fragment="content1">
+        <div class="col-md-6 offset-3">
+            <h3>Ajouter Un CentreVaccination</h3>
+        <form method="post" th:action="@{/CentreVac/save}">
+            <div>
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="nom" name="nom" th:value="${CentreVac.nom}">
+                <span class="text-danger" th:errors="${CentreVac.nom}"></span>
+            </div>
+            <div>
+                <label for="adresse" class="form-label">Adresse</label>
+                <input type="text" class="form-control" id="adresse" name="adresse" th:value="${CentreVac.adresse}">
+                <span class="text-danger" th:errors="${CentreVac.adresse}"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        </div>
+    </div>
+
+</body>
+</html>

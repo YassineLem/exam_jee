@@ -15,9 +15,10 @@ public class CentreVaccination {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String nom;
     private String adresse;
-    @OneToMany(mappedBy="centreVaccination")
+    @OneToMany(mappedBy="centreVaccination",fetch = FetchType.LAZY)
     private List<Citoyen> citoyenList ;
 
 

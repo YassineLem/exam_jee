@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="template"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content1">
+<div class="container mt-2">
+    <div class="card">
+        <div class="card-header">Liste des patients</div>
+        <div class="card-body" mt-5>
+<!--            <form method="get"-->
+<!--                  th:action="@{/user/index}">-->
+<!--                <label>Key word</label>-->
+<!--                <input type="text" name="keyword" th:value="${keywordS}">-->
+<!--                <button type="submit" class="btn btn-primary">Chercher</button>-->
+<!--            </form>-->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Date</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="p:${Listcitoyen}">
+                        <td th:text="${p.id}"></td>
+                        <td th:text="${p.nom}"></td>
+                        <td th:text="${p.dateNaissance}"></td>
+                        <td>
+                            <a onclick="return confirm('Etes vous sure?')" class="btn btn-danger" th:href="@{/Citoyen/delete(id=${p.id})}">delete
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-success"th:href="@{/Citoyen/edit(id=${p.id})}">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+<!--        <ul class="nav nav-pills">-->
+<!--            <li th:each="page,status:${pages}">-->
+<!--                <a th:class="${status.index==currentPage?'btn btn-info ms-1':'btn btn-outline-info ms-1'}" class="btn btn-outline-info m-lg-1"-->
+<!--                   th:text="${status.index}"-->
+<!--                   th:href="@{/user/index(page=${status.index},keyword=${keywordS})}"-->
+<!--                >-->
+
+<!--                </a>-->
+<!--            </li>-->
+<!--        </ul>-->
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
