@@ -19,8 +19,29 @@
                     <input type="text" id="centreNom" name="centreNom">
                     <button type="submit">Rechercher</button>
                 </form>
+                <div th:if="${centre != null}" class="card">
+                    <div class="card-header">Centre Vaccination</div>
+                    <div class="card-body" mt-5>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom</th>
+                                <td>Adresse</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td th:text="${centre.id}"></td>
+                                <td th:text="${centre.nom}"></td>
+                                <td th:text="${centre.adresse}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <div th:if="${citoyens != null and not #lists.isEmpty(citoyens)}">
-                    <h2>Citoyens associés au Centre de Vaccination :</h2>
+                    <h3>Citoyens associés au Centre de Vaccination :</h3>
                     <table class="table">
                     <thead>
                     <tr>
@@ -39,16 +60,11 @@
                     </tbody>
                 </table>
                 </div>
-                <!--        <ul class="nav nav-pills">-->
-                <!--            <li th:each="page,status:${pages}">-->
-                <!--                <a th:class="${status.index==currentPage?'btn btn-info ms-1':'btn btn-outline-info ms-1'}" class="btn btn-outline-info m-lg-1"-->
-                <!--                   th:text="${status.index}"-->
-                <!--                   th:href="@{/user/index(page=${status.index},keyword=${keywordS})}"-->
-                <!--                >-->
-
-                <!--                </a>-->
-                <!--            </li>-->
-                <!--        </ul>-->
+                <div th:if="${centre != null}" class="card">
+                <div th:if="${citoyens != null and #lists.isEmpty(citoyens)}">
+                    <p style="text-align: center">Aucun citoyen trouvé pour le Centre de Vaccination spécifié.</p>
+                </div>
+                </div>
             </div>
         </div>
     </div>

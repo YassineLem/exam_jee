@@ -5,21 +5,19 @@ import com.example.exam_jee.entities.Citoyen;
 import com.example.exam_jee.repositories.CentreVaccinationRepository;
 import com.example.exam_jee.repositories.CitoyenRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.persistence.Access;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@org.springframework.stereotype.Controller
 @AllArgsConstructor
-public class CitoyenController {
+public class Controller {
  private CitoyenRepository citoyenRepository;
  private CentreVaccinationRepository centreVaccRepository;
  @GetMapping("/formCitoyen")
@@ -78,12 +76,11 @@ public class CitoyenController {
 
   if (centreNom != null && !centreNom.isEmpty()) {
    CentreVaccination centre = centreVaccRepository.findByNom(centreNom);
-
+   model.addAttribute("centre",centre);
    if (centre != null) {
     citoyens = centre.getCitoyenList();
    }
   }
-
   model.addAttribute("citoyens", citoyens);
   return "centreVaccination";
  }
